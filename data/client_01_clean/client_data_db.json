@@ -1,0 +1,30 @@
+{
+  "snapshot_date": "2026-04-30",
+  "holders": {
+    "client": {
+      "name": "Margaret Hughes",
+      "accounts": [
+        {
+          "account_id": "H-ISA-01",
+          "platform": "Holloway",
+          "type": "Stocks & Shares ISA",
+          "owner": "Margaret Hughes",
+          "status": "open",
+          "value": 52000.0,
+          "currency": "GBP",
+          "valuation_date": "2026-04-30"
+        },
+        {
+          "account_id": "H-CASH-01",
+          "platform": "Holloway",
+          "type": "Cash Account",
+          "owner": "Margaret Hughes",
+          "status": "open",
+          "value": 25000.0,
+          "currency": "GBP",
+          "valuation_date": "2026-04-30"
+        }
+      ]
+    }
+  }
+}

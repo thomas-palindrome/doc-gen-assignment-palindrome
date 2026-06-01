@@ -1,0 +1,65 @@
+{
+  "snapshot_date": "2026-04-30",
+  "holders": {
+    "client": {
+      "name": "Robert Fletcher",
+      "accounts": [
+        {
+          "account_id": "H-ISA-R",
+          "platform": "Holloway",
+          "type": "Stocks & Shares ISA",
+          "owner": "Robert Fletcher",
+          "status": "open",
+          "value": 70000.0,
+          "currency": "GBP",
+          "valuation_date": "2026-04-30"
+        },
+        {
+          "account_id": "H-GIA-JF",
+          "platform": "Holloway",
+          "type": "General Investment Account",
+          "owner": "Joint",
+          "status": "open",
+          "value": 30000.0,
+          "currency": "GBP",
+          "valuation_date": "2026-03-10"
+        }
+      ]
+    },
+    "partner": {
+      "name": "Jean Fletcher",
+      "accounts": [
+        {
+          "account_id": "H-ISA-JE",
+          "platform": "Holloway",
+          "type": "Stocks & Shares ISA",
+          "owner": "Jean Fletcher",
+          "status": "open",
+          "value": 66000.0,
+          "currency": "GBP",
+          "valuation_date": "2026-04-30"
+        },
+        {
+          "account_id": "H-CASH-JE",
+          "platform": "Holloway",
+          "type": "Cash Account",
+          "owner": "Jean Fletcher",
+          "status": "open",
+          "value": null,
+          "currency": "GBP",
+          "valuation_date": null
+        },
+        {
+          "account_id": "H-GIA-JF",
+          "platform": "Holloway",
+          "type": "General Investment Account",
+          "owner": "Joint",
+          "status": "open",
+          "value": 30000.0,
+          "currency": "GBP",
+          "valuation_date": "2026-03-10"
+        }
+      ]
+    }
+  }
+}
