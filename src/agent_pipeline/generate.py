@@ -1,7 +1,7 @@
 """Generate an advice report for a client from the template config.
 
 Usage:
-    python -m pipeline.generate --client client_01_clean
+    python -m agent_pipeline.generate --client client_01_clean
 """
 
 import argparse
@@ -12,8 +12,8 @@ from pathlib import Path
 from dotenv import load_dotenv
 from openai import OpenAI
 
-from pipeline.formatter import format_document
-from pipeline.io_utils import read_file
+from document_formatter.formatting import format_document
+from document_formatter.loading import read_file
 
 
 class ReportGenerator:

@@ -17,13 +17,14 @@ evaluation pipeline, to ensure that the pipeline is working as expected and to v
 ## What you are given
 
 ```
-data/                  four clients, increasing in difficulty
-pipeline/
-  generate.py          reads the config and a client's data, produces a report
-  formatter.py         turns section content into the final .md (leave as-is)
+data/                                four clients, increasing in difficulty
+src/
+  agent_pipeline/generate.py         reads the config and a client's files, produces a report
+  document_formatter/loading.py      reads each source file into text
+  document_formatter/formatting.py   turns section content into the final .md (leave as-is)
 config/
-  template_config.json the report definition; >> most of your work goes
-outputs/               generated reports land here
+  template_config.json               the report definition; most of your work goes here
+outputs/                             generated reports land here
 ```
 
 Each client folder holds:
@@ -35,6 +36,10 @@ Each client folder holds:
   from an earlier pass, not a complete list. There may be other things in the data worth handling
   that the notes do not call out. Read the notes, then read the data yourself.
 - `template_spec.md`: what each section of the report should contain.
+
+A client folder may also contain other files, and not everything in it is relevant to the report.
+Some sources are more reliable than others. Deciding what to feed the model is part of the task: the
+starter pipeline naively loads every file in the folder and pushes all of it into every prompt.
 
 ## The config
 
@@ -57,6 +62,7 @@ the `scope` placeholder's `prompt` says how to fill it. The prompts, the `use_if
 templates, and how each value is sourced are the main levers you have.
 
 ## What to do
+We recommend understanding the daata clearly
 
 1. **Make the reports correct.** Work through the clients, `client_01_clean` to
    `client_04_stretch`. Each report should reflect that client's situation and the adviser's
@@ -75,24 +81,28 @@ templates, and how each value is sourced are the main levers you have.
 
 4. **Keep a short decisions log** (`DECISIONS.md`): the hardest calls you made and why, and how you
    would improve the pipeline and the agent setup if you took it further.
+  
+5. **Code Review/Presetation**: After submitting your solution, we will review it. In the next stage 
+   you will present how you approached the problem, any trade-offs you made, the final solution that 
+   you have made. You present/explain this to use in anyway you see fit.  
 
 ## Do not overfit
 
 The four clients are examples, not the test. We have a held-out set of clients with the same themes
 and different specifics, and we will run your pipeline on it. Build for the general case. Prompts
-that bake in a particular client's figures, names, or facts will break on the held-out set, and we
-will see it.
+that bake in a particular client's figures, names, or facts will break on the held-out set.
 
 ## Extensions (optional)
 
 If you want to show more, these are directions we would actually care about:
 
-- CI, for example a GitHub Actions workflow that runs your eval.
+- CI, type hints
+- Good agentic architecture and agent capabilities.
 - Generalising the setup: what happens if a data source changes shape, or a new source is added, and
   the prompts have to follow? How easy is that in your design?
 - More than one document type: how would you support several report configs without duplicating
   everything?
-- Dockerising, batching across clients, caching repeated calls.
+- Exploring the idea of prompts as code for prompt tuning and iteration
 
 These are optional. A focused, correct core beats a broad, shaky one.
 
@@ -101,12 +111,12 @@ These are optional. A focused, correct core beats a broad, shaky one.
 - Fork this repo and keep your fork public. Work in your fork and commit as you go; we read the
   history, so let it show your thinking rather than one final dump.
 - Use whatever AI and coding tools you like.
-- Send us your fork URL. It should contain your `config/`, your `pipeline/`, your eval, your
+- Send us your fork URL. It should contain your `config/`, your `src/`, your eval, your
   `DECISIONS.md`, and the generated reports in `outputs/`.
 
 ## How we assess it
 
-We weigh judgement over software polish:
+We weigh judgement and your problem solving skills over software polish:
 
 - Did the reports get the facts right, including which source to trust when sources disagree?
 - Did the right sections appear, and the wrong ones stay out?
@@ -115,12 +125,3 @@ We weigh judgement over software polish:
   out how you would?
 - Does it hold up on the held-out set?
 - How is the agent setup put together, and how would you take it further?
-
-Clean code matters, but it is not the headline. Questions are welcome; ask us anything.
-
-## What happens next
-
-We read through your code, config, and decisions. Then, in the interview, we'll ask you to walk us
-through it: how you approached the problem, where the hard parts were, how you got round them, and
-what you settled on. Present it however you like: slides, a short write-up, a demo, or just talking
-over the code. Keep enough notes as you go that you can tell that story.

@@ -14,7 +14,7 @@ uv sync                       # or: pip install -e .
 ## Run
 
 ```bash
-uv run python -m pipeline.generate --client client_01_clean
+uv run python -m agent_pipeline.generate --client client_01_clean
 # report is written to outputs/client_01_clean.md
 ```
 
@@ -28,13 +28,13 @@ Available clients live under `data/`:
 ## How it fits together
 
 ```
-config/template_config.json   defines the report: sections, prompts, inclusion rules, source maps
+config/template_config.json          the report definition: sections, prompts, inclusion rules
         │
         ▼
-pipeline/generate.py          for each section: decide inclusion, fill its prompts from the
-        │                     client's data, produce the section's content
+src/agent_pipeline/generate.py       reads the client's files, then for each section decides
+        │                            inclusion and fills its prompts from the client's data
         ▼
-pipeline/formatter.py         assembles the sections into the final .md document
+src/document_formatter/formatting.py assembles the sections into the final .md document
         │
         ▼
 outputs/<client>.md
@@ -43,13 +43,7 @@ outputs/<client>.md
 ## The pipeline is deliberately minimal
 
 What you are given is the smallest setup that runs end to end. It works, but it is naive: one model
-call per section, every source dumped into every prompt, a single model, and no tools. Improving it
-is part of the task; weigh speed, cost, and effectiveness (see `PROJECT_GUIDANCE.md`). Most of your
-work will be in `config/template_config.json`; the pipeline code is yours to improve too.
-
-## Notes
-
-- The scaffold makes live OpenAI calls; you need a working key in `.env`.
-- There are no expected-output files. Deciding what correct looks like, and checking it, is part of
-  the task.
-- Commit as you go; we read the history.
+call per section, every file in the client folder dumped into every prompt whether or not it is
+relevant, a single model, and no tools. Improving it is part of the task; weigh speed, cost, and
+effectiveness (see `PROJECT_GUIDANCE.md`). Most of your work will be in
+`config/template_config.json`; the pipeline code is yours to improve too.
