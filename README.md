@@ -15,7 +15,7 @@ uv sync                       # or: pip install -e .
 
 ```bash
 uv run python -m agent_pipeline.generate --client client_01_clean
-# report is written to outputs/client_01_clean.md
+# report is written to outputs/client_01_clean.md - This will run for client_01, we would recommend reviewing data/code before running on other clients.
 ```
 
 Available clients live under `data/`:
